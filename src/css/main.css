@@ -1,0 +1,155 @@
+:root {
+    --indigo: #2F3C7E;
+    --sakura: #F8C3CD;
+    --washi: #FFF5E6;
+    --sumi: #1A1A1A;
+}
+
+body {
+    margin: 0;
+    background: var(--sumi);
+    font-family: 'Hiragino Sans', sans-serif;
+    color: white;
+    overflow-x: hidden;
+}
+
+.gallery-container {
+    min-height: 100vh;
+    padding: 2rem;
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    url('https://f2.toyhou.se/file/f2-toyhou-se/images/13827762_qT5gSwfAUJMF7vv.png?1579826943');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.carousel-viewport {
+    width: 100%;
+    max-width: 800px;
+    overflow: visible;
+    position: relative;
+    perspective: 1500px;
+    margin: 2rem 0;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 40px; /* Added gap for spacing between cards */
+    transition: transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+    transform-style: preserve-3d;
+}
+
+.namecard {
+    width: 420px;
+    height: 700px;
+    flex-shrink: 0;
+    border-radius: 40px;
+    overflow: hidden;
+    box-shadow: 40px 40px 80px rgba(0, 0, 0, 0.3);
+    transform: rotateY(25deg) scale(0.85);
+    opacity: 0.6;
+    transition: all 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+    position: relative;
+    backface-visibility: hidden;
+}
+
+.namecard.active {
+    transform: rotateY(0deg) scale(1);
+    opacity: 1;
+    z-index: 2;
+}
+
+.namecard.prev {
+    transform: rotateY(-25deg) scale(0.85);
+}
+
+.namecard img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.nav-indicator {
+    margin: 2rem 0;
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.nav-dot.active {
+    width: 40px;
+    background: var(--sakura);
+}
+
+.social-grid {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    display: grid;
+    gap: 15px;
+}
+
+.social-link {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+    color: white;
+    transform: translateY(50px);
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.social-link.visible {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.social-icon {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+}
+
+.social-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.platform-name {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.username {
+    font-size: 0.9em;
+    opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+    .gallery-container {
+        padding: 1rem;
+    }
+
+    .carousel-viewport {
+        max-width: 100%;
+    }
+
+    .namecard {
+        width: 70vw;
+        height: calc(70vw * 1.666);
+        border-radius: 20px;
+    }
+}
