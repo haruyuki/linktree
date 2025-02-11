@@ -27,7 +27,7 @@ body {
 .carousel-viewport {
     width: 100%;
     max-width: 800px;
-    overflow: visible;
+    overflow: hidden;
     position: relative;
     perspective: 1500px;
     margin: 2rem 0;
@@ -38,6 +38,7 @@ body {
     gap: 40px; /* Added gap for spacing between cards */
     transition: transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
     transform-style: preserve-3d;
+    touch-action: pan-y;
 }
 
 .namecard {
@@ -151,5 +152,11 @@ body {
         width: 70vw;
         height: calc(70vw * 1.666);
         border-radius: 20px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .carousel-viewport {
+        overflow: visible;
     }
 }
